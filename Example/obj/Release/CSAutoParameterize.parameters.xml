@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="CrudDBEntities-Web.config Connection String" description="CrudDBEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Model.csdl|res://*/Model.ssdl|res://*/Model.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=MANAL-PC;initial catalog=CrudDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\CASD00013\\Documents\\Visual\ Studio\ 2015\\Projects\\Example\\Example\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CrudDBEntities']/@connectionString" />
+  </parameter>
+</parameters>

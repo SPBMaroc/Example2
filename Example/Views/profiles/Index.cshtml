@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Example.profiles>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.label)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.profile_level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product_groups.code)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.label)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.profile_level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_groups.code)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_profile }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_profile }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_profile })
+        </td>
+    </tr>
+}
+
+</table>

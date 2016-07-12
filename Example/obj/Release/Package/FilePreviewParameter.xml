@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Example" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\CASD00013\\Documents\\Visual\ Studio\ 2015\\Projects\\Example\\Example\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\CASD00013\\Documents\\Visual\ Studio\ 2015\\Projects\\Example\\Example\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="CrudDBEntities-Web.config Connection String" description="" value="metadata=res://*/Model.csdl|res://*/Model.ssdl|res://*/Model.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=MANAL-PC;initial catalog=CrudDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\CASD00013\\Documents\\Visual\ Studio\ 2015\\Projects\\Example\\Example\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CrudDBEntities']/@connectionString" />
+  </parameter>
+  <parameter name="AD_APPIDUri" description="" value="" tags="" />
+  <parameter name="AD_MetadataUrl" description="" value="https://login.windows.net/MMOUNIRspb.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml" tags="" />
+  <parameter name="AD_RealmAppSetting" description="" value="" tags="" />
+  <parameter name="AD_AudienceUriAppSetting" description="" value="" tags="" />
+  <parameter name="AD_Domain" description="" value="MMOUNIRspb.onmicrosoft.com" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\CASD00013\\Documents\\Visual\ Studio\ 2015\\Projects\\Example\\Example\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/appSettings/add[@key='ida:Domain']/@value" />
+  </parameter>
+</parameters>

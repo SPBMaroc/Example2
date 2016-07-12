@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CrudDBModelStoreContainer" CdmEntityContainer="CrudDBEntities">
+    <EntitySetMapping Name="product_groups">
+      <EntityTypeMapping TypeName="CrudDBModel.product_groups">
+        <MappingFragment StoreEntitySet="product_groups">
+          <ScalarProperty Name="id_product_group" ColumnName="id_product_group" />
+          <ScalarProperty Name="id_product_group_source" ColumnName="id_product_group_source" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="label" ColumnName="label" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="id_ref_application" ColumnName="id_ref_application" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="profiles">
+      <EntityTypeMapping TypeName="CrudDBModel.profiles">
+        <MappingFragment StoreEntitySet="profiles">
+          <ScalarProperty Name="id_profile" ColumnName="id_profile" />
+          <ScalarProperty Name="id_product_group" ColumnName="id_product_group" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="label" ColumnName="label" />
+          <ScalarProperty Name="profile_level" ColumnName="profile_level" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="CrudDBModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="trigram" ColumnName="trigram" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="activation_date" ColumnName="activation_date" />
+          <ScalarProperty Name="expiration_date" ColumnName="expiration_date" />
+          <ScalarProperty Name="id_profile" ColumnName="id_profile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

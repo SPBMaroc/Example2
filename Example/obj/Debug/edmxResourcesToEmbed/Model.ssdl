@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CrudDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="product_groups">
+    <Key>
+      <PropertyRef Name="id_product_group" />
+    </Key>
+    <Property Name="id_product_group" Type="int" Nullable="false" />
+    <Property Name="id_product_group_source" Type="int" />
+    <Property Name="code" Type="nchar" MaxLength="30" />
+    <Property Name="label" Type="nchar" MaxLength="30" />
+    <Property Name="description" Type="nchar" MaxLength="100" />
+    <Property Name="id_ref_application" Type="int" />
+  </EntityType>
+  <EntityType Name="profiles">
+    <Key>
+      <PropertyRef Name="id_profile" />
+    </Key>
+    <Property Name="id_profile" Type="int" Nullable="false" />
+    <Property Name="id_product_group" Type="int" />
+    <Property Name="code" Type="nchar" MaxLength="30" />
+    <Property Name="label" Type="nchar" MaxLength="30" />
+    <Property Name="profile_level" Type="nchar" MaxLength="30" />
+    <Property Name="description" Type="nchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="int" Nullable="false" />
+    <Property Name="trigram" Type="nchar" MaxLength="10" />
+    <Property Name="first_name" Type="nchar" MaxLength="30" />
+    <Property Name="last_name" Type="nchar" MaxLength="30" />
+    <Property Name="type" Type="nchar" MaxLength="30" />
+    <Property Name="password" Type="nchar" MaxLength="30" />
+    <Property Name="title" Type="nchar" MaxLength="30" />
+    <Property Name="email" Type="nchar" MaxLength="50" />
+    <Property Name="activation_date" Type="date" />
+    <Property Name="expiration_date" Type="date" />
+    <Property Name="id_profile" Type="int" />
+  </EntityType>
+  <Association Name="id_product_group">
+    <End Role="product_groups" Type="Self.product_groups" Multiplicity="0..1" />
+    <End Role="profiles" Type="Self.profiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product_groups">
+        <PropertyRef Name="id_product_group" />
+      </Principal>
+      <Dependent Role="profiles">
+        <PropertyRef Name="id_product_group" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="id_profile">
+    <End Role="profiles" Type="Self.profiles" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profiles">
+        <PropertyRef Name="id_profile" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="id_profile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CrudDBModelStoreContainer">
+    <EntitySet Name="product_groups" EntityType="Self.product_groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="profiles" EntityType="Self.profiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="id_product_group" Association="Self.id_product_group">
+      <End Role="product_groups" EntitySet="product_groups" />
+      <End Role="profiles" EntitySet="profiles" />
+    </AssociationSet>
+    <AssociationSet Name="id_profile" Association="Self.id_profile">
+      <End Role="profiles" EntitySet="profiles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

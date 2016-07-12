@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CrudDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="product_groups">
+    <Key>
+      <PropertyRef Name="id_product_group" />
+    </Key>
+    <Property Name="id_product_group" Type="Int32" Nullable="false" />
+    <Property Name="id_product_group_source" Type="Int32" />
+    <Property Name="code" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="label" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="id_ref_application" Type="Int32" />
+    <NavigationProperty Name="profiles" Relationship="Self.id_product_group" FromRole="product_groups" ToRole="profiles" />
+  </EntityType>
+  <EntityType Name="profiles">
+    <Key>
+      <PropertyRef Name="id_profile" />
+    </Key>
+    <Property Name="id_profile" Type="Int32" Nullable="false" />
+    <Property Name="id_product_group" Type="Int32" />
+    <Property Name="code" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="label" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="profile_level" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="product_groups" Relationship="Self.id_product_group" FromRole="profiles" ToRole="product_groups" />
+    <NavigationProperty Name="users" Relationship="Self.id_profile" FromRole="profiles" ToRole="users" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Int32" Nullable="false" />
+    <Property Name="trigram" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="first_name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="last_name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="activation_date" Type="DateTime" Precision="0" />
+    <Property Name="expiration_date" Type="DateTime" Precision="0" />
+    <Property Name="id_profile" Type="Int32" />
+    <NavigationProperty Name="profiles" Relationship="Self.id_profile" FromRole="users" ToRole="profiles" />
+  </EntityType>
+  <Association Name="id_product_group">
+    <End Role="product_groups" Type="Self.product_groups" Multiplicity="0..1" />
+    <End Role="profiles" Type="Self.profiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product_groups">
+        <PropertyRef Name="id_product_group" />
+      </Principal>
+      <Dependent Role="profiles">
+        <PropertyRef Name="id_product_group" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="id_profile">
+    <End Role="profiles" Type="Self.profiles" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profiles">
+        <PropertyRef Name="id_profile" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="id_profile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CrudDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="product_groups" EntityType="Self.product_groups" />
+    <EntitySet Name="profiles" EntityType="Self.profiles" />
+    <EntitySet Name="users" EntityType="Self.users" />
+    <AssociationSet Name="id_product_group" Association="Self.id_product_group">
+      <End Role="product_groups" EntitySet="product_groups" />
+      <End Role="profiles" EntitySet="profiles" />
+    </AssociationSet>
+    <AssociationSet Name="id_profile" Association="Self.id_profile">
+      <End Role="profiles" EntitySet="profiles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

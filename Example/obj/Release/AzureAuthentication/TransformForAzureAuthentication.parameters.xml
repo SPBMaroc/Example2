@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="AD_Domain" description="AD Domain" defaultValue="MMOUNIRspb.onmicrosoft.com" tags="AD_Domain">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\CASD00013\\Documents\\Visual\ Studio\ 2015\\Projects\\Example\\Example\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/appSettings/add[@key='ida:Domain']/@value" />
+  </parameter>
+</parameters>
